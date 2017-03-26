@@ -17,7 +17,7 @@ public class PercolationStats {
         int maxSites = n*n;
         int[] randomSites = new int[maxSites];
         for (int i = 0; i < n*n; i++) {
-            randomSites[i] = i+1;
+            randomSites[i] = i + 1;
         }
 
         trialResult = new double[trials];
@@ -47,11 +47,11 @@ public class PercolationStats {
     }
     // low  endpoint of 95% confidence interval
     public double confidenceLo() {
-        return mean()-(1.96*stddev() / Math.sqrt(trialResult.length));
+        return mean()-(1.96 * stddev() / Math.sqrt(trialResult.length));
     }
     // high endpoint of 95% confidence interval
     public double confidenceHi() {
-        return mean()+(1.96*stddev() / Math.sqrt(trialResult.length));
+        return mean()+(1.96 * stddev() / Math.sqrt(trialResult.length));
     }
     // test client (described below)
     public static void main(String[] args)
@@ -64,8 +64,8 @@ public class PercolationStats {
 
     private static int[]  toXY(int gridSize, int value) {
         int[] result = new int[] {0, 0};
-        result[0] = ((value-1) / gridSize) + 1;
-        result[1] = value - ((result[0]-1)*gridSize);
+        result[0] = ((value - 1) / gridSize) + 1;
+        result[1] = value - ((result[0] - 1)*gridSize);
 
         return  result;
     }

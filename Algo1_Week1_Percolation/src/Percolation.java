@@ -17,11 +17,13 @@ public class Percolation {
     public Percolation(int n) {
         setGridSize((short)n);
 
+	//not connected to fake down node
         unionData = new WeightedQuickUnionUF(gridSize*gridSize+ FAKE_SITES);
+	//connected to fake down node
         unionDataDown = new WeightedQuickUnionUF(gridSize*gridSize+ FAKE_SITES);
-        fakeSiteDown = gridSize*gridSize+ FAKE_SITES -1;
+        fakeSiteDown = gridSize*gridSize + FAKE_SITES - 1;
 
-        grid = new short[gridSize+1][gridSize+1];
+        grid = new short[gridSize + 1][gridSize + 1];
         for (short row = 1; row <= gridSize; row++)
         {
             for (short col = 1; col <= gridSize; col++)
@@ -37,13 +39,10 @@ public class Percolation {
             }
         }
 
-        // if (row == gridSize && downNotConnected) {
             for (short col = 1; col <= gridSize; col++) {
                 unionDataDown.union(xyTo1D(gridSize, col), fakeSiteDown);
             }
             downNotConnected = false;
-        // }
-        // fakeSiteUpGroup = unionData.find(FAKE_SITE_UP);
     }
     // open site (row i, column j) if it is not open already
     public void open(int i, int j) {
@@ -72,7 +71,7 @@ public class Percolation {
         indexCheck(i, j);
         return isOpen(i, j) && unionData.connected(xyTo1D((short)i, (short)j), FAKE_SITE_UP);
     }
-    // does the system percolate?
+    // does the system percolate (will use special UF object connected to fake down node)?
     public boolean percolates() {
         if (gridSize>1)
         {
