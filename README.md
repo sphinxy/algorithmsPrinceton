@@ -3,4 +3,4 @@ My programming assignments for Algorithms, Part I & Part II by Princeton Univers
 https://www.coursera.org/learn/algorithms-part1
 https://www.coursera.org/learn/algorithms-part2
 
-Also it's a change for me to learn Java a little
+Also it's a chance for me to learn Java a little
